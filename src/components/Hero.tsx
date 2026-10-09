@@ -6,7 +6,6 @@ export default function Hero() {
         <div className="flex items-baseline justify-between text-[0.7rem] font-mono uppercase tracking-[0.14em] mb-12 fin" style={{ color: "var(--ink-soft)" }}>
           <span>Portfolio — 2026</span>
           <span className="hidden sm:inline">Developer &amp; Designer</span>
-          <span>Based in AR</span>
         </div>
 
         <hr className="rule mb-12 fin" />

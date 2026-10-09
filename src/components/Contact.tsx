@@ -14,8 +14,8 @@ export default function Contact() {
           </h2>
 
           <div className="mt-16 flex flex-col sm:flex-row sm:items-center gap-8 sm:gap-12 fin fin-2">
-            <a href="mailto:hello@noahfulgado.com" className="u font-mono text-sm uppercase tracking-wide" style={{ color: "var(--accent)" }}>
-              hello@noahfulgado.com
+            <a href="mailto:noahfulgado@gmail.com" className="u font-mono text-sm uppercase tracking-wide" style={{ color: "var(--accent)" }}>
+              noahfulgado@gmail.com
             </a>
             <p className="font-mono text-sm" style={{ color: "var(--ink-soft)" }}>
               Usually replies within a day or two.
