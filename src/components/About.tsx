@@ -21,7 +21,7 @@ export default function About() {
               work happens.
             </p>
             <p className="mt-8 text-base leading-relaxed max-w-xl fin fin-2" style={{ color: "var(--ink-soft)" }}>
-              Hi, I’m Noah, a first-year Computer Science student and aspiring web developer. I enjoy creating clean, modern, and user-friendly websites for businesses, personal brands, and creative projects. I’m passionate about technology, design, and continuously improving my skills through hands-on experience."
+              Hi, I’m Noah, a first-year Computer Science student and aspiring web developer. I enjoy creating clean, modern, and user-friendly websites for businesses, personal brands, and creative projects. I’m passionate about technology, design, and continuously improving my skills through hands-on experience.
             </p>
           </div>
 
