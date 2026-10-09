@@ -21,13 +21,16 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" className="font-display text-2xl font-medium tracking-tight accent italic">N.F</a>
 
-        <div className="hidden md:flex items-center gap-7">
-          {links.map((l, i) => (
-            <a key={l.href} href={l.href} className="font-mono text-[0.7rem] uppercase tracking-[0.12em] u" style={{ color: "var(--ink)" }}>
-              <span className="accent mr-1.5">{String(i).padStart(2, "0")}</span>
-              {l.label}
-            </a>
-          ))}
+        <div className="flex items-center gap-5 md:gap-7">
+          <div className="hidden md:flex items-center gap-7">
+            {links.map((l, i) => (
+              <a key={l.href} href={l.href} className="font-mono text-[0.7rem] uppercase tracking-[0.12em] u" style={{ color: "var(--ink)" }}>
+                <span className="accent mr-1.5">{String(i).padStart(2, "0")}</span>
+                {l.label}
+              </a>
+            ))}
+          </div>
+
           <button
             onClick={toggleTheme}
             aria-label="Toggle theme"
@@ -40,15 +43,15 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             )}
           </button>
-        </div>
 
-        <button onClick={() => setOpen(!open)} className="md:hidden w-7 h-7 border flex items-center justify-center" style={{ borderColor: "var(--rule)", color: "var(--ink)" }} aria-label="Menu">
-          {open ? (
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/></svg>
-          ) : (
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
-          )}
-        </button>
+          <button onClick={() => setOpen(!open)} className="md:hidden w-7 h-7 border flex items-center justify-center" style={{ borderColor: "var(--rule)", color: "var(--ink)" }} aria-label="Menu">
+            {open ? (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/></svg>
+            ) : (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+            )}
+          </button>
+        </div>
       </nav>
 
       {open && (
@@ -58,9 +61,6 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
               <span className="accent mr-2">{String(i).padStart(2, "0")}</span>{l.label}
             </a>
           ))}
-          <button onClick={toggleTheme} className="font-mono text-xs uppercase tracking-[0.12em] text-left" style={{ color: "var(--ink)" }}>
-            <span className="accent mr-2">✳</span>{theme === "dark" ? "Light mode" : "Dark mode"}
-          </button>
         </div>
       )}
     </header>
