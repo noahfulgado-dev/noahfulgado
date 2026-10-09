@@ -24,8 +24,7 @@ export default function Hero() {
         {/* description + links */}
         <div className="mt-14 grid md:grid-cols-12 gap-8">
           <p className="md:col-span-7 text-lg md:text-xl font-display leading-snug fin fin-3" style={{ color: "var(--ink)" }}>
-            I make digital things that are <span className="italic accent">quiet by default</span> —
-            interfaces and systems built with restraint, where every line earns its place.
+            I build clean, modern websites and interfaces with a focus on <span className="italic accent">simplicity</span>.
           </p>
           <div className="md:col-span-5 flex flex-wrap items-start gap-x-8 gap-y-3 fin fin-4">
             <a href="#work" className="u font-mono text-sm uppercase tracking-wide" style={{ color: "var(--accent)" }}>

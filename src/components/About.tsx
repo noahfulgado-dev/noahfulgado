@@ -25,7 +25,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="md:col-span-5 md:pl-8 border-l" style={{ borderColor: "var(--rule)" }}>
+          <div className="md:col-span-5 border-t md:border-t-0 md:border-l pt-8 md:pt-0 md:pl-8" style={{ borderColor: "var(--rule)" }}>
             <p className="font-mono text-[0.7rem] uppercase tracking-[0.14em] mb-6 fin fin-2" style={{ color: "var(--ink-soft)" }}>
               Working principles
             </p>

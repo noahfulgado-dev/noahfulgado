@@ -35,7 +35,7 @@ export default function Work() {
         <div className="sec-head fin">
           <span className="sec-num">03</span>
           <span className="sec-label">Selected work</span>
-          <span className="ml-auto font-mono text-[0.7rem] uppercase tracking-[0.12em]" style={{ color: "var(--ink-soft)" }}>
+          <span className="hidden sm:inline ml-auto font-mono text-[0.7rem] uppercase tracking-[0.12em]" style={{ color: "var(--ink-soft)" }}>
             Hover · click to open
           </span>
         </div>
@@ -57,7 +57,7 @@ export default function Work() {
                   onClick={() => setSelected(p)}
                   onMouseEnter={() => setActive(p.title)}
                   onMouseLeave={() => setActive(null)}
-                  className="w-full grid grid-cols-[auto_auto] md:grid-cols-[4rem_1fr_auto] items-baseline gap-6 text-left py-6 transition"
+                  className="w-full flex flex-col gap-3 md:grid md:grid-cols-[4rem_1fr_auto] md:items-baseline md:gap-6 text-left py-6 transition"
                   style={{
                     borderTop: i === 0 ? "1px solid var(--rule)" : "1px solid var(--rule)",
                     borderBottom: i === projects.length - 1 ? "1px solid var(--rule)" : "none",
@@ -67,12 +67,16 @@ export default function Work() {
                     transition: "opacity .3s ease, border-color .3s ease, padding .3s ease",
                   }}
                 >
-                  <span className="font-mono text-xs accent">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="flex items-baseline gap-4">
-                    <span className="font-display text-2xl md:text-4xl leading-none" style={{ color: "var(--ink)" }}>{p.title}</span>
-                    <span className="hidden sm:inline font-mono text-xs" style={{ color: "var(--ink-soft)" }}>{p.year}</span>
+                  <span className="flex items-baseline justify-between md:hidden">
+                    <span className="font-mono text-xs accent">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="font-mono text-[0.65rem] uppercase tracking-[0.12em]" style={{ color: "var(--ink-soft)" }}>{p.kind}</span>
                   </span>
-                  <span className="font-mono text-xs uppercase tracking-[0.1em]" style={{ color: "var(--ink-soft)", transform: on ? "translateX(0)" : "translateX(-4px)", transition: "transform .3s ease" }}>
+                  <span className="hidden md:inline font-mono text-xs accent">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="flex items-baseline justify-between md:justify-start gap-4">
+                    <span className="font-display text-2xl md:text-4xl leading-none" style={{ color: "var(--ink)" }}>{p.title}</span>
+                    <span className="font-mono text-xs" style={{ color: "var(--ink-soft)" }}>{p.year}</span>
+                  </span>
+                  <span className="hidden md:inline font-mono text-xs uppercase tracking-[0.1em]" style={{ color: "var(--ink-soft)", transform: on ? "translateX(0)" : "translateX(-4px)", transition: "transform .3s ease" }}>
                     {p.kind}
                   </span>
                 </button>
