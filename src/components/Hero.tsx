@@ -39,12 +39,10 @@ export default function Hero() {
         </div>
 
         {/* small index / stats */}
-        <div className="mt-16 grid sm:grid-cols-4 gap-px" style={{ backgroundColor: "var(--rule)" }}>
+        <div className="mt-16 grid sm:grid-cols-2 gap-px" style={{ backgroundColor: "var(--rule)" }}>
           {[
             ["03", "yrs experience"],
-            ["12", "projects shipped"],
-            ["08", "tools of the trade"],
-            ["01", "design language"],
+            ["2", "projects shipped"],
           ].map(([n, l], i) => (
             <div key={l} className="p-5 fin" style={{ animationDelay: `${0.15 + i * 0.08}s`, backgroundColor: "var(--bg-primary)" }}>
               <div className="font-display text-4xl accent">{n}</div>
