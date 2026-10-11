@@ -57,7 +57,7 @@ export default function Work() {
                   onClick={() => setSelected(p)}
                   onMouseEnter={() => setActive(p.title)}
                   onMouseLeave={() => setActive(null)}
-                  className="w-full flex flex-col gap-3 md:grid md:grid-cols-[4rem_1fr_auto] md:items-baseline md:gap-6 text-left py-6 transition"
+                  className="w-full flex flex-col gap-3 md:grid md:grid-cols-[4rem_1fr_auto] md:items-baseline md:gap-6 text-left py-6 transition cursor-crosshair"
                   style={{
                     borderTop: i === 0 ? "1px solid var(--rule)" : "1px solid var(--rule)",
                     borderBottom: i === projects.length - 1 ? "1px solid var(--rule)" : "none",
