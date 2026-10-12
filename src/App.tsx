@@ -13,7 +13,7 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar theme={theme} toggleTheme={toggleTheme} />
-      <main className="flex-1">
+      <main className="flex-1 max-w-6xl w-full mx-auto px-6 pt-24 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
         <Hero />
         <About />
         <Skills />

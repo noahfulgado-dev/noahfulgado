@@ -5,8 +5,11 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="border-t" style={{ borderColor: "var(--rule)", backgroundColor: "var(--bg-secondary)" }}>
-      <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+    <footer className="max-w-6xl w-full mx-auto px-6 pb-6">
+      <div
+        className="box flex flex-col md:flex-row items-start md:items-center justify-between gap-6 px-6 py-6"
+        style={{ backgroundColor: "var(--bg-secondary)" }}
+      >
         <span className="font-display text-xl italic accent">N.F</span>
 
         <nav className="flex items-center gap-6">

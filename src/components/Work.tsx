@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
+import Box from "./Box";
 
 const projects = [
   {
@@ -26,68 +28,65 @@ const projects = [
 type Project = (typeof projects)[number];
 
 export default function Work() {
-  const [active, setActive] = useState<string | null>(null);
   const [selected, setSelected] = useState<Project | null>(null);
 
   return (
-    <section id="work" className="px-6 py-24">
-      <div className="max-w-6xl mx-auto">
-        <div className="sec-head fin">
-          <span className="sec-num">03</span>
-          <span className="sec-label">Selected work</span>
-          <span className="hidden sm:inline ml-auto font-mono text-[0.7rem] uppercase tracking-[0.12em]" style={{ color: "var(--ink-soft)" }}>
-            Hover · click to open
-          </span>
-        </div>
+    <Box
+      id="work"
+      num="03"
+      label="Selected work"
+      span="lg:col-span-12"
+      gridTexture
+      headExtra={
+        <span className="hidden sm:inline font-mono text-[0.7rem] uppercase tracking-[0.12em]" style={{ color: "var(--ink-soft)" }}>
+          Click a cell to open
+        </span>
+      }
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-px border" style={{ backgroundColor: "var(--rule)", borderColor: "var(--rule)" }}>
+        {projects.map((p, i) => (
+          <button
+            key={p.title}
+            type="button"
+            onClick={() => setSelected(p)}
+            className="cell group flex flex-col text-left transition-colors hover:bg-[var(--accent-soft)] cursor-crosshair"
+          >
+            <div className="flex items-center justify-between mb-8">
+              <span className="font-mono text-xs accent">{String(i + 1).padStart(2, "0")}</span>
+              <span className="font-mono text-[0.65rem] uppercase tracking-[0.14em]" style={{ color: "var(--ink-soft)" }}>
+                {p.kind}
+              </span>
+            </div>
 
-        {/* header row */}
-        <div className="hidden md:grid grid-cols-[4rem_1fr_auto] gap-6 px-0 pb-3 font-mono text-[0.65rem] uppercase tracking-[0.16em] fin" style={{ color: "var(--ink-soft)" }}>
-          <span>No.</span>
-          <span>Project</span>
-          <span>Field</span>
-        </div>
-
-        <div className="fin" style={{ animationDelay: "0.1s" }}>
-          {projects.map((p, i) => {
-            const on = active === p.title;
-            return (
-              <div key={p.title} className="group">
-                <button
-                  type="button"
-                  onClick={() => setSelected(p)}
-                  onMouseEnter={() => setActive(p.title)}
-                  onMouseLeave={() => setActive(null)}
-                  className="w-full flex flex-col gap-3 md:grid md:grid-cols-[4rem_1fr_auto] md:items-baseline md:gap-6 text-left py-6 transition cursor-crosshair"
-                  style={{
-                    borderTop: i === 0 ? "1px solid var(--rule)" : "1px solid var(--rule)",
-                    borderBottom: i === projects.length - 1 ? "1px solid var(--rule)" : "none",
-                    opacity: active && !on ? 0.4 : 1,
-                    paddingLeft: on ? "0.75rem" : "0rem",
-                    borderLeft: on ? "2px solid var(--accent)" : "2px solid transparent",
-                    transition: "opacity .3s ease, border-color .3s ease, padding .3s ease",
-                  }}
-                >
-                  <span className="flex items-baseline justify-between md:hidden">
-                    <span className="font-mono text-xs accent">{String(i + 1).padStart(2, "0")}</span>
-                    <span className="font-mono text-[0.65rem] uppercase tracking-[0.12em]" style={{ color: "var(--ink-soft)" }}>{p.kind}</span>
-                  </span>
-                  <span className="hidden md:inline font-mono text-xs accent">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="flex items-baseline justify-between md:justify-start gap-4">
-                    <span className="font-display text-2xl md:text-4xl leading-none" style={{ color: "var(--ink)" }}>{p.title}</span>
-                    <span className="font-mono text-xs" style={{ color: "var(--ink-soft)" }}>{p.year}</span>
-                  </span>
-                  <span className="hidden md:inline font-mono text-xs uppercase tracking-[0.1em]" style={{ color: "var(--ink-soft)", transform: on ? "translateX(0)" : "translateX(-4px)", transition: "transform .3s ease" }}>
-                    {p.kind}
-                  </span>
-                </button>
+            <div className="mt-auto">
+              <div className="flex items-baseline justify-between gap-4">
+                <span className="font-display text-3xl md:text-4xl leading-none" style={{ color: "var(--ink)" }}>
+                  {p.title}
+                </span>
+                <span className="font-mono text-xs" style={{ color: "var(--ink-soft)" }}>{p.year}</span>
               </div>
-            );
-          })}
-        </div>
+              <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 font-mono text-xs" style={{ color: "var(--ink-soft)" }}>
+                {p.tags.map((t) => (
+                  <span key={t}>#{t}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-6 flex items-center justify-between border-t pt-4" style={{ borderColor: "var(--rule)" }}>
+              <span className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-[var(--ink-soft)] group-hover:text-[var(--accent)] transition-colors">
+                {p.note}
+              </span>
+            </div>
+          </button>
+        ))}
       </div>
 
-      {selected && <ExpandPanel project={selected} onClose={() => setSelected(null)} />}
-    </section>
+      {selected &&
+        createPortal(
+          <ExpandPanel project={selected} onClose={() => setSelected(null)} />,
+          document.body
+        )}
+    </Box>
   );
 }
 
